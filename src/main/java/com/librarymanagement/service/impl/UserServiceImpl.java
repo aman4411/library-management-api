@@ -1,5 +1,7 @@
 package com.librarymanagement.service.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.librarymanagement.model.User;
@@ -19,6 +21,11 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public User addUser(User user) {
 		return userRepository.save(user);
+	}
+
+	@Override
+	public List<User> getAllUsers() {
+		return userRepository.findAll();
 	}
 
 }

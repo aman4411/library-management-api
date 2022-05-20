@@ -46,6 +46,13 @@ public class User {
 		this.book2return = book2return;
 	}
 
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	public int getUserId() {
 		return userId;
 	}
