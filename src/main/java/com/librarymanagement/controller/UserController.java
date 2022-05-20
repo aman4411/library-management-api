@@ -23,17 +23,17 @@ public class UserController {
 		super();
 		this.userService = userService;
 	}
-	
-	//create user
+
+	// create user
 	@PostMapping("/user")
-	public ResponseEntity<User> createUser(@RequestBody User user){
+	public ResponseEntity<User> createUser(@RequestBody User user) {
 		User createdUser = userService.addUser(user);
-		return new ResponseEntity<User>(createdUser,HttpStatus.CREATED);
+		return new ResponseEntity<User>(createdUser, HttpStatus.CREATED);
 	}
-	
-	//get all users
+
+	// get all users
 	@GetMapping("users")
-	public List<User> getAllUsers(){
+	public List<User> getAllUsers() {
 		return userService.getAllUsers();
 	}
 }
