@@ -11,4 +11,6 @@ public interface UserService {
 	List<User> getAllUsers();
 	
 	User findUserById(int userId);
+	
+	List<User> searchUserByName(String name);
 }

@@ -35,4 +35,9 @@ public class UserServiceImpl implements UserService{
 		                new ResourceNotFoundException("User","Id",userId));
 	}
 
+	@Override
+	public List<User> searchUserByName(String name) {
+		return userRepository.findByName(name);
+	}
+
 }
