@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.librarymanagement.exception.ResourceNotFoundException;
 import com.librarymanagement.model.User;
 import com.librarymanagement.repository.UserRepository;
 import com.librarymanagement.service.UserService;
@@ -26,6 +27,12 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public List<User> getAllUsers() {
 		return userRepository.findAll();
+	}
+
+	@Override
+	public User findUserById(int userId) {
+		return userRepository.findById(userId).orElseThrow(() -> 
+		                new ResourceNotFoundException("User","Id",userId));
 	}
 
 }
