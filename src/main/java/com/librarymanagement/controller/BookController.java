@@ -46,5 +46,13 @@ public class BookController {
 		User user = bookService.lendBookToUser(userId,isbn);
 		return new ResponseEntity<User>(user,HttpStatus.OK);
 	}
+	
+	//return book to library
+	
+	@GetMapping("/return/{userId}/{isbn}")
+	public List<Book> returnBookToLibrary(@PathVariable("userId") int userId,@PathVariable("isbn") int isbn){
+		List<Book> booksInLibrary = bookService.returnBook(userId,isbn);
+		return booksInLibrary;
+	}
 
 }

@@ -14,4 +14,6 @@ public interface BookService {
 	User lendBookToUser(int userId, int isbn);
 	
 	Book findBookById(int isbn);
+	
+	List<Book> returnBook(int userId,int isbn);
 }

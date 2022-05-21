@@ -68,4 +68,25 @@ public class BookServiceImpl implements BookService {
 		           new ResourceNotFoundException("Book","Id",isbn));
 	}
 
+	@Override
+	public List<Book> returnBook(int userId, int isbn) {
+		User user = userService.findUserById(userId);
+		Book book = findBookById(isbn);
+		
+		if(user.getBook1issue().equals(String.valueOf(isbn))) {
+			//book1 slot to be returned
+			user.setBook1issue(null);
+			user.setBook1return(String.valueOf(isbn));
+		}else if(user.getBook2issue().equals(String.valueOf(isbn))) {
+			//book2 slot to be returned
+			user.setBook2issue(null);
+			user.setBook2return(String.valueOf(isbn));
+		}
+		book.setReturnDate(new Date());
+		book.setStatus("available");
+		bookRepository.save(book);
+		userService.addUser(user);
+		return getAllBooks();
+	}
+
 }
