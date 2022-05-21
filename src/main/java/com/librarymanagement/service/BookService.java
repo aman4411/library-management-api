@@ -16,4 +16,6 @@ public interface BookService {
 	Book findBookById(int isbn);
 	
 	List<Book> returnBook(int userId,int isbn);
+	
+	List<Book> searchByTitleOrAuthor(String searchQuery);
 }

@@ -48,11 +48,16 @@ public class BookController {
 	}
 	
 	//return book to library
-	
 	@GetMapping("/return/{userId}/{isbn}")
 	public List<Book> returnBookToLibrary(@PathVariable("userId") int userId,@PathVariable("isbn") int isbn){
 		List<Book> booksInLibrary = bookService.returnBook(userId,isbn);
 		return booksInLibrary;
+	}
+	
+	//search book by title or author
+	@GetMapping("/search/book/{searchTerm}")
+	public List<Book> searchBook(@PathVariable("searchTerm") String searchQuery){
+		return bookService.searchByTitleOrAuthor(searchQuery);
 	}
 
 }
